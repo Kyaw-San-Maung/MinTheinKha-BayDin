@@ -29,6 +29,23 @@ export const Result = () => {
   if (isError) return JSON.stringify(`Error: ${error.message}`);
 
   //filtering the answer according to the user choice
-  
-  return <div>Result</div>;
+  const [answerForUser] = data.filter(
+    (answer) =>
+      answer.questionNo === questionChoiceNumber &&
+      answer.answerNo === luckyChoiceNumber
+  );
+  console.log(answerForUser);
+  return (
+    <div className="flex flex-col items-center scale-up-center">
+      <div className="question my-10 text-center">
+        <span className="text-2xl">မေးခွန်း</span>
+        <h5 className="text-2xl mt-5">{questionChoiceNumber}</h5>
+      </div>
+      <h1 className="text-2xl ">ရလဒ် :</h1>
+      <h3 className="mt-5 text-2xl mb-10 min-[300px]:p-2 text-center">
+        {answerForUser?.answerResult}
+      </h3>
+      <button onClick={() => navigate("/")}>Back To QuestionList</button>
+    </div>
+  );
 };
