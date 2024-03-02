@@ -1,7 +1,9 @@
 import { useQuery } from "react-query";
 import { FetchQuestion } from "../api/FetchQuestion";
+import { useNavigate } from "react-router-dom";
 
 export const QuestionLIst = () => {
+  const navigate = useNavigate();
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["questions"],
     queryFn: FetchQuestion,
@@ -10,11 +12,8 @@ export const QuestionLIst = () => {
   if (isLoading) return <h2>Loading...</h2>;
   if (isError) return JSON.stringify(`Error: ${error.message}`);
 
-  const handleChooseQuestion = (questionNumber) => {
-    console.log(questionNumber);
-  };
   return (
-    <>
+    <div>
       {data.map((question) => (
         <div key={question.id} className="mx-52 my-4">
           <div className="bg-blend-normal border rounded-xl border-black flex justify-between">
@@ -24,13 +23,13 @@ export const QuestionLIst = () => {
             </h2>
             <button
               className="mx-5 border rounded-xl my-2 bg-black text-white font-bold px-3 py-1 text-xs"
-              onClick={() => handleChooseQuestion(question.questionNo)}
+              onClick={() => navigate(`/numberList`)}
             >
-              <a href="/numberList">Choose</a>
+              Choose
             </button>
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
