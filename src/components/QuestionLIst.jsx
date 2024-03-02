@@ -5,9 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { userQuestionChoice } from "../redux/Slice";
 
 export const QuestionLIst = () => {
+  //Redux for managing the state
   const questionNumber = useSelector(
     (state) => state.number.questionChoiceNumber
   );
+  console.log(questionNumber);
   const dispatch = useDispatch();
 
   //React Query Part for fetching data from json
@@ -43,7 +45,6 @@ export const QuestionLIst = () => {
           </div>
         </div>
       ))}
-      <p>Hi, this is {questionNumber} </p>
     </div>
   );
 };

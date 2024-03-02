@@ -2,10 +2,16 @@ import { useQuery } from "react-query";
 import { FetchNumberList } from "../api/FetNumberList";
 import { useNavigate } from "react-router-dom";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { userLuckeyChoice } from "../redux/Slice";
 
 export const ChooseNumberList = () => {
+  //Redux for state management
   const luckyNumber = useSelector((state) => state.number.luckyChoiceNumber);
+  console.log(luckyNumber);
+  const dispatch = useDispatch();
+
+  //React Query for data fetching form db.json
   const navigate = useNavigate();
   const { data, isError, isLoading, error } = useQuery({
     queryKey: ["numberList"],
@@ -19,6 +25,7 @@ export const ChooseNumberList = () => {
         {data.map((number) => (
           <a
             onClick={() => {
+              dispatch(userLuckeyChoice(number.eng));
               navigate(`/result`);
             }}
             key={number.id}
@@ -29,7 +36,6 @@ export const ChooseNumberList = () => {
             </div>
           </a>
         ))}
-        <p>Hi This is lucky number {luckyNumber}</p>
       </div>
     </>
   );
