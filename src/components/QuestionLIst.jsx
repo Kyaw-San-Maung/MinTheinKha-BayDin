@@ -26,7 +26,7 @@ export const QuestionLIst = () => {
               className="mx-5 border rounded-xl my-2 bg-black text-white font-bold px-3 py-1 text-xs"
               onClick={() => handleChooseQuestion(question.questionNo)}
             >
-              Choose
+              <a href="/numberList">Choose</a>
             </button>
           </div>
         </div>
