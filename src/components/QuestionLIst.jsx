@@ -1,8 +1,16 @@
 import { useQuery } from "react-query";
 import { FetchQuestion } from "../api/FetchQuestion";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { userQuestionChoice } from "../redux/Slice";
 
 export const QuestionLIst = () => {
+  const questionNumber = useSelector(
+    (state) => state.number.questionChoiceNumber
+  );
+  const dispatch = useDispatch();
+
+  //React Query Part for fetching data from json
   const navigate = useNavigate();
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["questions"],
@@ -11,6 +19,8 @@ export const QuestionLIst = () => {
 
   if (isLoading) return <h2>Loading...</h2>;
   if (isError) return JSON.stringify(`Error: ${error.message}`);
+
+  //Redux for doing state management
 
   return (
     <div>
@@ -23,13 +33,17 @@ export const QuestionLIst = () => {
             </h2>
             <button
               className="mx-5 border rounded-xl my-2 bg-black text-white font-bold px-3 py-1 text-xs"
-              onClick={() => navigate(`/numberList`)}
+              onClick={() => {
+                dispatch(userQuestionChoice(question.questionNo));
+                navigate("/numberList");
+              }}
             >
               Choose
             </button>
           </div>
         </div>
       ))}
+      <p>Hi, this is {questionNumber} </p>
     </div>
   );
 };

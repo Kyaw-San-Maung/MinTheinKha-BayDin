@@ -11,7 +11,7 @@ function App() {
         Min Thein Kha - Bay Din Question List
       </h2>
       <Routes>
-        <Route index element={<QuestionLIst />}></Route>
+        <Route path="/" element={<QuestionLIst />}></Route>
         <Route path="/numberList" element={<ChooseNumberList />}></Route>
         <Route path="/result" element={<Result />}></Route>
       </Routes>
