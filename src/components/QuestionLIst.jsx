@@ -24,18 +24,31 @@ export const QuestionLIst = () => {
 
   return (
     <div>
-      <h2 className="my-4 justify-center content-center">
-        သိလိုသောမေးခွန်း ရွေးပါ။
-      </h2>
+      <div className="flex justify-start my-8 mx-48">
+        <img
+          src="https://th.bing.com/th/id/R.28a9b499422993cc80e3b5194f20607a?rik=%2bmfHu6SZsEanHg&pid=ImgRaw&r=0&sres=1&sresct=1"
+          alt="Min Thein Kha"
+          className="rounded-full w-12 h-13 "
+        />
+        <h2 className=" mx-3 font-bold text-3xl">သိလိုသောမေးခွန်း ရွေးပါ။</h2>
+      </div>
+
       {data.map((question) => (
         <div key={question.id} className="mx-48 my-4">
-          <div className="bg-blend-normal border rounded-xl border-black flex justify-between">
+          <div
+            className="bg-blend-normal border rounded-xl border-orange-900 flex justify-between cursor-pointer"
+            onClick={() => {
+              dispatch(userQuestionChoice(question.questionNo));
+              dispatch(userChoiceQuestion(question.questionName));
+              navigate("/numberList");
+            }}
+          >
             <h2 className="py-3 mx-3">
               {question.questionNo}.
               <span className="mx-5">{question.questionName}</span>
             </h2>
             <button
-              className="mx-5 border rounded-xl my-2 bg-black text-white font-bold px-5 py-1 text-xs"
+              className="mx-5 border rounded-xl my-2 bg-orange-900 text-white font-bold px-5 py-1 text-xs"
               onClick={() => {
                 dispatch(userQuestionChoice(question.questionNo));
                 dispatch(userChoiceQuestion(question.questionName));

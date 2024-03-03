@@ -7,8 +7,8 @@ import { userLuckeyChoice } from "../redux/Slice";
 
 export const ChooseNumberList = () => {
   //Redux for state management
-  const luckyNumber = useSelector((state) => state.number.luckyChoiceNumber);
-  console.log(luckyNumber);
+  const { luckyChoiceNumber, question } = useSelector((state) => state.number);
+  console.log(luckyChoiceNumber);
   const dispatch = useDispatch();
 
   //React Query for data fetching form db.json
@@ -20,8 +20,18 @@ export const ChooseNumberList = () => {
   if (isLoading) return <h2>Loading...</h2>;
   if (isError) return JSON.stringify(`Error: ${error.message}`);
   return (
-    <>
-      <div className="grid grid-cols-8 mx-80 my-20">
+    <div>
+      <button
+        className="px-10 py-2 mx-80 mt-5 border border-orange-900 rounded-full"
+        onClick={() => navigate("/")}
+      >
+        နောက်သို့
+      </button>
+      <h2 className="font-bold text-xl mx-80 my-5">
+        <span>မေးခွန်း : </span>
+        {question}
+      </h2>
+      <div className="grid grid-cols-8 mx-80 ">
         {data.map((number) => (
           <a
             onClick={() => {
@@ -31,12 +41,12 @@ export const ChooseNumberList = () => {
             key={number.id}
             className="cursor-pointer"
           >
-            <div className="py-2 my-1 mx-1 border border-black rounded-full ">
+            <div className="py-2 my-1 mx-1 font-bold bg-orange-900 rounded-full text-white">
               <p className="font-bold flex justify-center">{number.myan}</p>
             </div>
           </a>
         ))}
       </div>
-    </>
+    </div>
   );
 };
