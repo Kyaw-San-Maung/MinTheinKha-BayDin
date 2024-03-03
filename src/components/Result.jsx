@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Result = () => {
   //Redux for managing the state
-  const { questionChoiceNumber, luckyChoiceNumber } = useSelector(
+  const { questionChoiceNumber, luckyChoiceNumber, question } = useSelector(
     (state) => state.number
   );
 
@@ -39,7 +39,7 @@ export const Result = () => {
     <div className="flex flex-col items-center scale-up-center">
       <div className="question my-10 text-center">
         <span className="text-2xl">မေးခွန်း</span>
-        <h5 className="text-2xl mt-5">{questionChoiceNumber}</h5>
+        <h5 className="text-2xl mt-5">{question}</h5>
       </div>
       <h1 className="text-2xl ">ရလဒ် :</h1>
       <h3 className="mt-5 text-2xl mb-10 min-[300px]:p-2 text-center">

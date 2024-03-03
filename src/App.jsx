@@ -7,9 +7,6 @@ import { Result } from "./components/Result";
 function App() {
   return (
     <>
-      <h2 className="font-bold text-4xl justify-center flex">
-        Min Thein Kha - Bay Din Question List
-      </h2>
       <Routes>
         <Route path="/" element={<QuestionLIst />}></Route>
         <Route path="/numberList" element={<ChooseNumberList />}></Route>
