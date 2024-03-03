@@ -36,16 +36,28 @@ export const Result = () => {
   );
   console.log(answerForUser);
   return (
-    <div className="flex flex-col items-center scale-up-center">
-      <div className="question my-10 text-center">
-        <span className="text-2xl">မေးခွန်း</span>
-        <h5 className="text-2xl mt-5">{question}</h5>
+    <div>
+      <button
+        onClick={() => navigate("/")}
+        className="mx-48 mt-10 mb-4 font-bold rounded-full border border-orange-900 px-7 py-3"
+      >
+        ထပ်မေးမယ်
+      </button>
+      <div className="border bg-orange-900 mx-48 rounded-xl">
+        <div className="px-20 py-20">
+          <div className="flex">
+            <h5 className="text-2xl font-bold text-white">
+              <span className="">မေးခွန်း : </span>
+              {question}
+            </h5>
+          </div>
+
+          <h3 className="text-2xl font-bold text-white mt-4">
+            <span className="">ရလဒ် : </span>
+            {answerForUser?.answerResult}
+          </h3>
+        </div>
       </div>
-      <h1 className="text-2xl ">ရလဒ် :</h1>
-      <h3 className="mt-5 text-2xl mb-10 min-[300px]:p-2 text-center">
-        {answerForUser?.answerResult}
-      </h3>
-      <button onClick={() => navigate("/")}>Back To QuestionList</button>
     </div>
   );
 };
