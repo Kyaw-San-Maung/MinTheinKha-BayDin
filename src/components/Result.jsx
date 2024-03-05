@@ -47,7 +47,7 @@ export const Result = () => {
         <div className="px-20 py-20">
           <div className="flex">
             <h5 className="text-2xl font-bold text-white">
-              <span className="">မေးခွန်း : </span>
+              <span className="">မေးခွန်း = </span>
               {question}
             </h5>
           </div>
